@@ -36,7 +36,7 @@ function getCommandArgs(text) {
     app.command('/connect', async ({command, ack, respond}) => {
         await ack();
 
-        if (!command.text || command.text.includes('help')) {
+        if (!command.text || command.text.includes('help') || command.text == '/connect [env] [org]') {
             await respond('Usage: `/connect [env] [org]`, where `[env]` is prod, staging, or dev.\nUse `/connect_orgs [env]` to see a list of orgs.');
             return;
         }
@@ -68,7 +68,7 @@ function getCommandArgs(text) {
     app.command('/connect_orgs', async ({command, ack, respond}) => {
         await ack();
 
-        if (!command.text || command.text.includes('help')) {
+        if (!command.text || command.text.includes('help') || command.text == '/connect_orgs [env]') {
             await respond('Usage: `/connect_orgs [env]`, where `[env]` is prod, staging, or dev.');
             return;
         }
