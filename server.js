@@ -98,7 +98,6 @@ function stripQuotes(text) {
         let orgTitle = org["title"];
         let orgURLs  = org["urls"];
 
-
         await respond(`${orgTitle} (${envName.toUpperCase()})\n${orgURLs.join('\n')}`);
     });
 
