@@ -2,7 +2,10 @@ require('dotenv').config()
 
 var { App } = require('@slack/bolt');
 const redis = require('redis');
-const client = redis.createClient();
+const client = redis.createClient({
+    host: process.env.REDIS_URL,
+    port: process.env.REDIS_PORT
+});
 
 
 // Initializes your app with your bot token and signing secret
