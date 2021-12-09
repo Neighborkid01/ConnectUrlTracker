@@ -74,7 +74,7 @@ function stripQuotes(text) {
 
         console.log(`Request received: /connect ${command.text}`);
         if (!command.text || command.text.includes('help') || command.text == '[env] [org]') {
-            await respond('Usage: `/connect [env] [org]`, where `[env]` is prod, staging, or dev.\n\nOther available commands:\n`/connect_orgs`: See available orgs\n`/connect_add`: Add a URL or create an org\n`/connect_del`: Delete an existing org');
+            await respond('Usage: `/connect [env] [org]`, where `[env]` is prod, staging, or dev and `[org]` is the organization to view.\n\nOther available commands:\n`/connect_orgs`: See available orgs\n`/connect_add`: Add a URL or create an org\n`/connect_del`: Delete an existing org');
             return;
         }
 
