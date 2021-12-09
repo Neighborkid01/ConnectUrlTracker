@@ -3,7 +3,8 @@ require('dotenv').config()
 var { App } = require('@slack/bolt');
 const redis = require('redis');
 const client = redis.createClient({
-    host: process.env.REDIS_URL,
+    url: process.env.REDIS_URL,
+    password: process.env.REDIS_PASSWORD
 });
 
 
