@@ -51,12 +51,13 @@ function stripQuotes(text) {
     await client.connect();
 
     // Starting Bolt app
-    await app.start(process.env.PORT || 3000);
+    await app.start(process.env.PORT);
 
     app.command('/connect', async ({command, ack, respond}) => {
         await ack();
 
-        if (!command.text || command.text.includes('help') || command.text == '/connect [env] [org]') {
+        console.log(`Request received: /connect ${command.text}`);
+        if (!command.text || command.text.includes('help') || command.text == '[env] [org]') {
             await respond('Usage: `/connect [env] [org]`, where `[env]` is prod, staging, or dev.\n\nOther available commands:\n`/connect_orgs`: See available orgs\n`/connect_add`: Add a URL or create an org\n`/connect_del`: Delete an existing org');
             return;
         }
@@ -88,7 +89,8 @@ function stripQuotes(text) {
     app.command('/connect_orgs', async ({command, ack, respond}) => {
         await ack();
 
-        if (!command.text || command.text.includes('help') || command.text == '/connect_orgs [env]') {
+        console.log(`Request received: /connect_orgs ${command.text}`);
+        if (!command.text || command.text.includes('help') || command.text == '[env]') {
             await respond('Usage: `/connect_orgs [env]`, where `[env]` is prod, staging, or dev.\n\nOther available commands:\n`/connect`: Get the URLs for the specified org\n`/connect_add`: Add a URL or create an org\n`/connect_del`: Delete an existing org');
             return;
         }
@@ -110,7 +112,8 @@ function stripQuotes(text) {
     app.command('/connect_add', async ({command, ack, respond}) => {
         await ack();
 
-        if (!command.text || command.text.includes('help') || command.text == '/connect_add [env] [org] ["Org Title"] [list,of,urls]') {
+        console.log(`Request received: /connect_add ${command.text}`);
+        if (!command.text || command.text.includes('help') || command.text == '[env] [org] ["Org Title"] [list,of,urls]') {
             await respond('Usage: `/connect_add [env] [org] ["Org Title"] [list,of,urls]`, where `[env]` is prod, staging, or dev, `[org]` is the lowercase org name, `["Org Title"]` is the org\'s name in the db in quotes (enter `""` to keep the same name), and `[list,of,urls]` is the comma separated list of URLs you wish to add.\n\nOther available commands:\n`/connect`: Get the URLs for the specified org\n`/connect_orgs`: See available orgs\n`/connect_del`: Delete an existing org');
             return;
         }
@@ -160,7 +163,8 @@ function stripQuotes(text) {
     app.command('/connect_del', async ({command, ack, respond}) => {
         await ack();
 
-        if (!command.text || command.text.includes('help') || command.text == '/connect_del [env] [org]') {
+        console.log(`Request received: /connect_del ${command.text}`);
+        if (!command.text || command.text.includes('help') || command.text == '[env] [org]') {
             await respond('Usage: `/connect_del [env] [org]`, where `[env]` is prod, staging, or dev and `[org]` is the lowercase org name.\n*WARNING:* This will removed all saved URLs for this org and cannot be undone.\n\nOther available commands:\n`/connect`: Get the URLs for the specified org\n`/connect_orgs`: See available orgs\n`/connect_add`: Add a URL or create an org');
             return;
         }
