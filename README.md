@@ -12,7 +12,6 @@ This is a Slack app to quickly see prod/staging/dev urls.
 
 4. `/connect_del`: Delete an existing org
 
-
 ### `/connect`
 Usage: `/connect [env] [org]`, where `[env]` is prod, staging, or dev and `[org]` is the organization to view
 
