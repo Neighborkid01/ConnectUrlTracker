@@ -6,6 +6,7 @@ const client = redis.createClient({
     url: process.env.REDIS_URL,
     password: process.env.REDIS_PASSWORD
 });
+console.log(process.env.REDIS_URL);
 
 
 // Initializes your app with your bot token and signing secret
