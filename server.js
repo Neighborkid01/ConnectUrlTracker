@@ -6,7 +6,7 @@ const client = redis.createClient({
     url: process.env.REDIS_URL,
     password: process.env.REDIS_PASSWORD
 });
-console.log(process.env.REDIS_URL);
+
 
 
 // Initializes your app with your bot token and signing secret
@@ -16,6 +16,20 @@ const app = new App({
     socketMode: true,
     appToken: process.env.SLACK_APP_TOKEN
 });
+
+async function ensureEnvsAreSet() {
+    console.log('Ensuring prod, staging, and dev objects are setup correctly...');
+
+    let envs = ['prod', 'staging', 'dev'];
+    for (let env of envs) {
+        let orgs = await client.get(env);
+        if (!orgs) {
+            let json = '{}';
+            await client.set(env, json);
+            console.log(`Successfully created ${env}`);
+        }
+    }
+}
 
 function getCommandArgs(text) {
     let args = [];
@@ -49,6 +63,8 @@ function stripQuotes(text) {
     // Setting up redis connection
     client.on('error', (err) => console.log('Redis Client Error', err));
     await client.connect();
+
+    await ensureEnvsAreSet();
 
     // Starting Bolt app
     await app.start(process.env.PORT || 3000);
