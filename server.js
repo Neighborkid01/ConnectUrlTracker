@@ -51,7 +51,7 @@ function stripQuotes(text) {
     await client.connect();
 
     // Starting Bolt app
-    await app.start(process.env.PORT);
+    await app.start(process.env.PORT || 3000);
 
     app.command('/connect', async ({command, ack, respond}) => {
         await ack();
