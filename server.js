@@ -122,7 +122,10 @@ function stripQuotes(text) {
 
         let orgs = JSON.parse(json);
         let orgNames = Object.keys(orgs);
-        await respond(`${envName.toUpperCase()} orgs:\n\`\`\`${orgNames.join('\n')}\`\`\``);
+        let response = `${envName.toUpperCase()} orgs:\n\`\`\`${orgNames.join('\n')}\`\`\``;
+        if (orgNames.length === 0) { response = `There are no orgs set for ${envName.toUpperCase()}` }
+
+        await respond(response);
     });
 
     app.command('/connect_add', async ({command, ack, respond}) => {
