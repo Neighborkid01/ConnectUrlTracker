@@ -1,6 +1,6 @@
 {
   "name": "urltracker",
-  "version": "0.1",
+  "version": "1.0",
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
