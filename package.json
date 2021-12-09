@@ -1,8 +1,11 @@
 {
   "name": "urltracker",
-  "version": "1.0",
+  "version": "1.0.0",
   "main": "server.js",
   "license": "MIT",
+  "engines": {
+    "node": "17.0.1"
+  },
   "dependencies": {
     "@slack/bolt": "^3.7.0",
     "dotenv": "^10.0.0",
